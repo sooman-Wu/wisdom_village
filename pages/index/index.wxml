@@ -1,13 +1,105 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+<view class="banner">
+  <swiper indicator-dots="true" autoplay="{{autoplay}}" indicator-color='#fff' indicator-active-color="#e50d02" interval="{{interval}}" duration="{{duration}}">
+    <block wx:for="{{imgUrls}}" wx:key="imgUrls">
+      <swiper-item>
+        <image src="{{item.imgUrl}}" class="slide-image" lazy-load />
+      </swiper-item>
     </block>
+  </swiper>
+</view>
+<view class="album">
+  <icon class="album-img">公告/</icon>
+  <swiper autoplay="{{autoplay}}" interval="{{interval}}" vertical='true' duration="{{duration}}">
+    <block>
+      <swiper-item wx:for="{{message}}">
+        <navigator url='../detail/detail6?id={{item.id}}&title={{item.title}}'>
+          {{item.title}}
+        </navigator>
+      </swiper-item>
+    </block>
+  </swiper>
+  <icon class="arrow-icon">
+    <image src='http://h5.suitaquba.com/qianShan_image/arrow.png'></image>
+  </icon>
+</view>
+<view class="function_templet">
+  <!-- <view class="function-lis" wx:for="{{function}}">
+                        <navigator url='../orgination/orgination'>
+                          <image src='https://dangjian.suitaquba.com{{item.image}}' lazy-load></image>
+                          <view class="p"> {{item.name}}</view>
+                        </navigator>
+                      </view> -->
+  <view class="function-lis">
+    <navigator url='../activity/activity'>
+      <image src='http://h5.suitaquba.com/party_image/7(1).png' mode="widthFix"></image>
+      <view class="p"> 党员活动</view>
+    </navigator>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view class="function-lis">
+    <navigator url='../data/data'>
+      <image src='http://h5.suitaquba.com/party_image/9.png' mode="widthFix"></image>
+      <view class="p"> 数据分析</view>
+    </navigator>
+  </view>
+  <view class="function-lis">
+    <navigator url='../orgination/orgination'>
+      <image src='http://h5.suitaquba.com/party_image/5.png' mode="widthFix"></image>
+      <view class="p"> 党组织机构</view>
+    </navigator>
+  </view>
+  <view class="function-lis">
+    <navigator url='../feedback/feedback'>
+      <image src='http://h5.suitaquba.com/party_image/9 (1).png' mode="widthFix"></image>
+      <view class="p"> 匿名举报</view>
+    </navigator>
+  </view>
+  <view class="function-lis">
+    <navigator url='../mine/mine'>
+      <image src='http://h5.suitaquba.com/party_image/11.png' mode="widthFix"></image>
+      <view class="p"> 我的支部</view>
+    </navigator>
+  </view>
+</view>
+<view class="advertisiment-banner">
+  <image src='http://qianshan.suitaquba.com/userfiles/357a0d17132244a1af6cc4a985ead9a5/images/stq/tbMainBanner/2018/02/Tzs2.jpg'></image>
+</view>
+<view class="news-wrapper">
+  <view class="news-lis" wx:key="indexNews">
+    <navigator url='../index/detail?title={{item.title}}&id={{item.id}}'>
+      <view class="news-type">
+        <view class="news-type-left">
+          <view class="h1 text-hidden-line">hdahidojaoidja</view>
+          <view class="h2">item.createDate
+            <view>item.hits
+              <image src='http://h5.suitaquba.com/party_image/looked.png' lazy-load></image>
+            </view>
+          </view>
+        </view>
+        <view class="news-type-right">
+          <image src="{{item.image}}" lazy-load></image>
+        </view>
+      </view>
+    </navigator>
+  </view>
+  <view class="news-lis">
+    <navigator url='../index/detail?title={{item.title}}&id={{item.id}}'>
+      <image src='{{item.image}}' class="news_img" mode='aspectFill'></image>
+      <view class="h1 text-hidden-line">{{item.title}}</view>
+      <view class="h2">{{item.createDate}}
+        <view>{{item.hits}}
+          <image src='http://h5.suitaquba.com/party_image/looked.png' lazy-load></image>
+        </view>
+      </view>
+    </navigator>
+  </view>
+  <view class="news-lis">
+    <navigator url='../index/detail?title={{item.title}}&id={{item.id}}'>
+      <view class="h1 text-hidden-line">{{item.title}}</view>
+      <view class="h2">{{item.createDate}}
+        <view>{{item.hits}}
+          <image src='http://h5.suitaquba.com/party_image/looked.png' lazy-load></image>
+        </view>
+      </view>
+    </navigator>
   </view>
 </view>
